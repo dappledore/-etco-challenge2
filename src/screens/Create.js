@@ -8,7 +8,6 @@ import {
   ScrollView,
   TouchableOpacity,
   Picker,
-  Platform,
 } from "react-native";
 import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -17,6 +16,7 @@ import { Text } from "../GlobalStyles";
 import Constants from "expo-constants";
 import firebase, { db } from "../Firebase";
 import { sendGridEmail } from "../SendEmail";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().max(50, "氏名は長すぎます。").required("氏名は必須です。"),
@@ -40,7 +40,7 @@ export default (props) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   return (
     <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
-      <ScrollView
+      <KeyboardAwareScrollView
         contentContainerStyle={{
           flexGrow: 1,
           justifyContent: "space-between",
@@ -74,6 +74,7 @@ export default (props) => {
             handleSubmit,
             errors,
             values,
+            isValid,
             setFieldValue,
           }) => (
             <View style={styles.container}>
@@ -154,6 +155,7 @@ export default (props) => {
 
               <Button
                 onPress={handleSubmit}
+                disabled={!isValid}
                 title="申込み"
                 color="black"
                 height="30"
@@ -166,7 +168,7 @@ export default (props) => {
             <Text style={[styles.text, { fontSize: 20 }]}>管理ログイン</Text>
           </Link>
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 };
