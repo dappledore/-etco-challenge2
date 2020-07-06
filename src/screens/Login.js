@@ -51,7 +51,10 @@ export default class Login extends Component {
             });
         }}
         validationSchema={yup.object().shape({
-          email: yup.string().email().required("Emailは必須です。"),
+          email: yup
+            .string()
+            .email("Emailが正しくありません")
+            .required("Emailは必須です。"),
           password: yup.string().required("Passwordは必須です。"),
         })}
       >
@@ -122,7 +125,7 @@ const styles = StyleSheet.create({
     color: "black",
     borderWidth: 1,
     padding: 10,
-    fontSize: 30,
+    fontSize: 20,
     marginBottom: 20,
   },
   error: { fontSize: 20, color: "red", marginBottom: 10 },

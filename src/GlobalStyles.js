@@ -3,7 +3,7 @@ import { Text as RNText, TextInput as RNTextInput } from "react-native";
 
 const styles = {
   text: {
-    fontSize: 15,
+    fontSize: 25,
     marginBottom: 5,
   },
 };
