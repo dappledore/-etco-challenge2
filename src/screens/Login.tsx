@@ -1,6 +1,5 @@
 import * as yup from "yup";
 import { Formik } from "formik";
-
 import React, { Component, Fragment } from "react";
 import {
   TextInput,
@@ -12,18 +11,16 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import firebase from "../Firebase";
+import { RouteComponentProps } from "react-router-native";
 
-export default class Login extends Component {
+export default class Login extends Component<RouteComponentProps, {}> {
   state = {
-    loading: false, //spinner制御用
+    loading: false,
   };
-
   _isMounted = false;
-
   componentDidMount = () => {
     this._isMounted = true;
   };
-
   componentWillUnmount = () => {
     this._isMounted = false;
   };
@@ -34,7 +31,6 @@ export default class Login extends Component {
         onSubmit={(values, actions) => {
           if (this._isMounted) this.setState({ loading: true });
           console.log("submit");
-
           firebase
             .auth()
             .signInWithEmailAndPassword(values.email, values.password)
@@ -44,7 +40,6 @@ export default class Login extends Component {
             })
             .catch((error) => {
               console.log("login error: " + error);
-
               if (this._isMounted) this.setState({ loading: false });
               actions.setStatus({ loginFailed: true });
               actions.setSubmitting(false);
@@ -107,13 +102,12 @@ export default class Login extends Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 40,
     marginBottom: 10,
-    marginTop: Constants.statusBarHeight,
+    marginTop: Constants.statusBarHeight + 50,
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "flex-start",

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Challenge2",
     "slug": "Challenge2",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -13,11 +13,14 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.dappledore.Challenge2",
+      "buildNumber": "1.0.2"
+    },
+    "android": {
+      "package": "com.dappledore.Challenge2",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"

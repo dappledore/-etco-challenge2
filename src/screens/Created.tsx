@@ -2,9 +2,7 @@ import React from "react";
 import { Link } from "react-router-native";
 import { View, SafeAreaView, StyleSheet, TouchableOpacity } from "react-native";
 import { Text } from "../GlobalStyles";
-
 import Constants from "expo-constants";
-
 export default function Created() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -21,19 +19,18 @@ export default function Created() {
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 40,
     marginBottom: 10,
-    marginTop: Constants.statusBarHeight,
+    marginTop: Constants.statusBarHeight + 20,
     flexDirection: "column",
     justifyContent: "flex-start",
-    alignItems: "flex-start",
+    alignItems: "flex-start"
   },
   text: {
     fontSize: 30,
-    marginBottom: 30,
-  },
+    marginBottom: 30
+  }
 });

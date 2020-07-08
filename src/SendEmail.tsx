@@ -1,8 +1,13 @@
 const CONFIG = {
   SENDGRIDURL: "https://api.sendgrid.com/v3/mail/send",
 };
-
-function sendGridEmail(to, from, subject, body, type = "text/plain") {
+export default function sendGridEmail(
+  to: string,
+  from: string,
+  subject: string,
+  body: string,
+  type = "text/plain"
+) {
   const isSuccess = sendEmail(
     "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",
     to,
@@ -13,8 +18,14 @@ function sendGridEmail(to, from, subject, body, type = "text/plain") {
   );
   return isSuccess;
 }
-
-function sendEmail(key, to, from, subject, body, type) {
+function sendEmail(
+  key: String,
+  to: string,
+  from: string,
+  subject: string,
+  body: string,
+  type: string
+) {
   return fetch(CONFIG.SENDGRIDURL, {
     method: "POST",
     headers: {
@@ -45,15 +56,11 @@ function sendEmail(key, to, from, subject, body, type) {
     }),
   })
     .then((response) => {
-      console.console.log(response);
-
+      console.log(JSON.stringify(response));
       return true;
     })
     .catch((error) => {
-      console.log(error);
-
+      console.log(JSON.stringify(error));
       return false;
     });
 }
-
-exports.sendGridEmail = sendGridEmail;
